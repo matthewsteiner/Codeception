@@ -177,7 +177,9 @@ class Laravel5 extends Client
             $this->oldDb = $this->app['db'];
         }
 
-        $this->app = $this->kernel = $this->loadApplication();
+        if (!$request) {
+            $this->app = $this->kernel = $this->loadApplication();
+        }
 
         // Set the request instance for the application,
         if (is_null($request)) {
